@@ -15,7 +15,7 @@
 TcpSocket::TcpSocket(int maxWaiter) {
     m_sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (m_sockfd < 0) {
-        throw std::runtime_error("create socket failed\n");
+        std::cout << "create socket failed\n";
         return;
     }
     m_maxWaiter = maxWaiter;
@@ -28,7 +28,7 @@ TcpSocket::~TcpSocket() {
 }
 
 bool TcpSocket::bindPort(int _port) {
-    if (_port < MIN_PORT || MAX_PORT > 65535) {
+    if (_port < MIN_PORT || MAX_PORT > MAX_PORT) {
         return false;
     }
 
